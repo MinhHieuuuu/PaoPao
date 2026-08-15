@@ -1,0 +1,789 @@
+/* ==========================================================================
+   DEV BIO - DISCORD BOT SERVICES
+   STYLING SYSTEM (Cyberpunk / Modern Dark Mode Glassmorphism)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CORE DESIGN SYSTEM & CSS VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+    /* Background Palette */
+    --bg-deep: #070913;
+    --bg-card: rgba(18, 22, 41, 0.65);
+    --bg-card-hover: rgba(28, 34, 61, 0.85);
+
+    /* Neon Accent Colors */
+    --primary-purple: #8b5cf6;
+    --primary-cyan: #06b6d4;
+    --primary-pink: #ec4899;
+    --discord-brand: #5865F2;
+    --youtube-brand: #FF0000;
+    --facebook-brand: #1877F2;
+
+    /* Typography Colors */
+    --text-heading: #ffffff;
+    --text-body: #cbd5e1;
+    --text-muted: #64748b;
+
+    /* Glassmorphism Tokens */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border-glow: rgba(6, 182, 212, 0.4);
+    --backdrop-blur: blur(16px);
+
+    /* Shadows & Glows */
+    --shadow-purple-glow: 0 0 25px rgba(139, 92, 246, 0.35);
+    --shadow-cyan-glow: 0 0 25px rgba(6, 182, 212, 0.35);
+    --shadow-discord-glow: 0 0 25px rgba(88, 101, 242, 0.4);
+    --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.5);
+
+    /* Smooth Transitions */
+    --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-deep);
+    color: var(--text-body);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Particle Canvas */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Reusable Utility Badges & Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-purple) 50%, var(--primary-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: #c084fc;
+}
+
+.badge-cyan {
+    background: rgba(6, 182, 212, 0.15);
+    border-color: rgba(6, 182, 212, 0.3);
+    color: #67e8f9;
+}
+
+.badge-red {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.3);
+    color: #fca5a5;
+}
+
+/* --------------------------------------------------------------------------
+   3. HEADER SECTION (Avatar, Profile Info & Status)
+   -------------------------------------------------------------------------- */
+.profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    background: linear-gradient(var(--bg-deep), var(--bg-deep)) padding-box,
+                linear-gradient(135deg, var(--primary-cyan), var(--primary-purple), var(--primary-pink)) border-box;
+    box-shadow: var(--shadow-purple-glow);
+    transition: var(--transition-smooth);
+}
+
+.avatar-wrapper:hover .avatar-img {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 0 35px rgba(6, 182, 212, 0.6);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    background-color: #10b981;
+    border: 3px solid var(--bg-deep);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    z-index: 2;
+}
+
+.status-indicator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(16, 185, 129, 0.6);
+    animation: pulse-ring 2s infinite;
+    box-sizing: border-box;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+.profile-name {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.verified-icon {
+    color: var(--primary-cyan);
+    font-size: 1.25rem;
+}
+
+.profile-tagline {
+    font-size: 1.05rem;
+    color: var(--text-body);
+    max-width: 600px;
+    margin: 0 auto 1.25rem;
+    font-weight: 400;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. FEATURED SERVICES SECTION (Service Cards & Media Showcase)
+   -------------------------------------------------------------------------- */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-title i {
+    color: var(--primary-cyan);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    background: var(--bg-card);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-card);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-cyan), var(--primary-purple));
+    opacity: 0.8;
+    transition: var(--transition-fast);
+}
+
+.service-card.youtube-card::before {
+    background: linear-gradient(90deg, #FF0000, #ff6b6b);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    background: var(--bg-card-hover);
+    border-color: var(--glass-border-glow);
+    box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+}
+
+.service-card.youtube-card:hover {
+    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.4);
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.service-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.service-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: rgba(139, 92, 246, 0.2);
+    color: var(--primary-purple);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.youtube-icon-box {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff3333;
+    border-color: rgba(255, 0, 0, 0.3);
+}
+
+.service-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+.service-desc {
+    font-size: 0.95rem;
+    color: var(--text-body);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.card-media {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+.card-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .card-media img {
+    transform: scale(1.04);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem 0.85rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-item i {
+    color: #10b981;
+    font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. ACTION BUTTONS & CONTACT LINKS
+   -------------------------------------------------------------------------- */
+.links-section {
+    margin-bottom: 3rem;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.5rem;
+    border-radius: 16px;
+    background: var(--bg-card);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    color: var(--text-heading);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-action-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-action-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    transition: var(--transition-fast);
+}
+
+.btn-discord {
+    border-color: rgba(88, 101, 242, 0.3);
+}
+.btn-discord .btn-action-icon {
+    background: rgba(88, 101, 242, 0.2);
+    color: #7983f5;
+}
+.btn-discord:hover {
+    background: rgba(88, 101, 242, 0.25);
+    border-color: var(--discord-brand);
+    box-shadow: var(--shadow-discord-glow);
+    transform: translateY(-3px);
+}
+
+.btn-facebook {
+    border-color: rgba(24, 119, 242, 0.3);
+}
+.btn-facebook .btn-action-icon {
+    background: rgba(24, 119, 242, 0.2);
+    color: #4294ff;
+}
+.btn-facebook:hover {
+    background: rgba(24, 119, 242, 0.25);
+    border-color: var(--facebook-brand);
+    box-shadow: 0 0 25px rgba(24, 119, 242, 0.4);
+    transform: translateY(-3px);
+}
+
+.btn-youtube {
+    border-color: rgba(255, 0, 0, 0.3);
+}
+.btn-youtube .btn-action-icon {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff4d4d;
+}
+.btn-youtube:hover {
+    background: rgba(255, 0, 0, 0.25);
+    border-color: var(--youtube-brand);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+.btn-tiktok {
+    border-color: rgba(254, 44, 85, 0.3);
+}
+.btn-tiktok .btn-action-icon {
+    background: rgba(254, 44, 85, 0.2);
+    color: #fe2c55;
+}
+.btn-tiktok:hover {
+    background: rgba(254, 44, 85, 0.25);
+    border-color: #fe2c55;
+    box-shadow: 0 0 25px rgba(254, 44, 85, 0.4);
+    transform: translateY(-3px);
+}
+
+.btn-pricing {
+    border-color: rgba(6, 182, 212, 0.3);
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+}
+.btn-pricing .btn-action-icon {
+    background: rgba(6, 182, 212, 0.25);
+    color: var(--primary-cyan);
+}
+.btn-pricing:hover {
+    border-color: var(--primary-cyan);
+    box-shadow: var(--shadow-cyan-glow);
+    transform: translateY(-3px);
+}
+
+.btn-arrow {
+    opacity: 0.5;
+    transition: var(--transition-fast);
+}
+
+.btn-action:hover .btn-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   6. PRICING MODAL & PRICING CARDS
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 6, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: #0f1325;
+    border: 1px solid var(--glass-border-glow);
+    border-radius: 24px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    transform: scale(0.9);
+    transition: var(--transition-smooth);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 0, 0, 0.5);
+    transform: rotate(90deg);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.pricing-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-fast);
+}
+
+.pricing-card.featured {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--primary-purple);
+    position: relative;
+}
+
+.pricing-card.featured::before {
+    content: 'KHUYÊN DÙNG';
+    position: absolute;
+    top: -12px;
+    right: 15px;
+    background: var(--primary-purple);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+}
+
+.pricing-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+}
+
+.pricing-price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-cyan);
+    margin-bottom: 1rem;
+}
+
+.pricing-price span {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    font-size: 0.875rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pricing-features li i {
+    color: #10b981;
+    font-size: 0.8rem;
+}
+
+.btn-choose {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary-purple);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btn-choose:hover {
+    background: #7c3aed;
+    box-shadow: var(--shadow-purple-glow);
+}
+
+/* --------------------------------------------------------------------------
+   7. TOAST NOTIFICATION
+   -------------------------------------------------------------------------- */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(18, 22, 41, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--primary-cyan);
+    box-shadow: var(--shadow-cyan-glow);
+    color: #fff;
+    padding: 0.85rem 1.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.toast i {
+    color: #10b981;
+    font-size: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. FOOTER SECTION
+   -------------------------------------------------------------------------- */
+.site-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.social-mini-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.social-mini-links a {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    transition: var(--transition-fast);
+}
+
+.social-mini-links a:hover {
+    color: var(--primary-cyan);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   9. ANIMATIONS & RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    .profile-name {
+        font-size: 1.75rem;
+    }
+    .avatar-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+    .status-indicator {
+        bottom: 3px;
+        right: 3px;
+        width: 18px;
+        height: 18px;
+    }
+    .service-card {
+        padding: 1.25rem;
+    }
+    .card-media {
+        height: auto;
+    }
+    .modal-card {
+        padding: 1.25rem;
+    }
+}
