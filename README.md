@@ -53,15 +53,6 @@ d:/codebot/bio/
 
 ---
 
-## 🌐 Hướng Dẫn Deploy Lên GitHub Pages
-
-1. Đẩy toàn bộ thư mục code lên **GitHub Repository**.
-2. Vào **Settings** ➔ Chọn mục **Pages** ở danh sách bên trái.
-3. Tại phần **Source**, chọn branch `main` (hoặc `master`) ➔ Nhấn **Save**.
-4. Chờ 1-2 phút, GitHub sẽ cấp cho bạn đường link truy cập live!
-
----
-
 ## 📬 Thông Tin Liên Hệ
 
 - 💬 **Discord**: [PaoPao Discord Profile](https://discord.com/users/354094724916707328) (`@minhhieu99`)
