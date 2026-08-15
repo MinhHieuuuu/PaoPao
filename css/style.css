@@ -319,6 +319,21 @@ body {
     border-color: rgba(255, 0, 0, 0.3);
 }
 
+.music-icon-box {
+    background: rgba(236, 72, 153, 0.15);
+    color: #ec4899;
+    border-color: rgba(236, 72, 153, 0.3);
+}
+
+.service-card.music-card::before {
+    background: linear-gradient(90deg, #ec4899, #8b5cf6);
+}
+
+.service-card.music-card:hover {
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.4);
+}
+
 .service-title {
     font-size: 1.35rem;
     font-weight: 700;
