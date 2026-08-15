@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO & OpenGraph Meta Tags -->
+    <title>Mờ Hờ | Discord Bot Creator & Auto Notify</title>
+    <meta name="description"
+        content="Góc nhỏ làm Bot Discord tự động thông báo YouTube & Quản lý Server thân thiện, chất lượng, giá sinh viên. Hỗ trợ nhiệt tình!">
+    <meta name="keywords"
+        content="Discord Bot, YouTube to Discord Bot, Discord Server Management, Bot Discord Viet Nam">
+    <meta property="og:title" content="Mờ Hờ | Discord Bot Creator">
+    <meta property="og:description" content="Bot Discord tự động thông báo YouTube & Quản lý Server trơn tru, dễ dùng.">
+    <meta property="og:type" content="website">
+
+    <!-- External Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Modular CSS Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Dynamic Glowing Cyber Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- ==========================================================================
+             1. HEADER SECTION (AVATAR, NICKNAME & SLOGAN)
+             ========================================================================== -->
+        <header class="profile-header">
+            <!-- Avatar Container with Glow & Status Pulse -->
+            <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Avatar Discord Bot Developer" class="avatar-img" id="user-avatar">
+                <div class="status-indicator" title="Đang online - Inbox trao đổi thoải mái nhé!"></div>
+            </div>
+
+            <!-- Profile Name & Verification Badge -->
+            <h1 class="profile-name">
+                <span class="gradient-text">Mờ Hờ // Bot PaoPao</span>
+                <i class="fa-solid fa-circle-check verified-icon" title="Discord Bot Creator"></i>
+            </h1>
+
+            <!-- Bio Slogan (Thân thiện, đam mê, không hoa mỹ) -->
+            <p class="profile-tagline">
+                Góc nhỏ làm <strong>Bot Discord Tự Động</strong> thông báo YouTube &amp; Quản trị Server.
+                Code đam mê, tối ưu, sẵn sàng hỗ trợ setup sever discord mới cho mọi người!
+            </p>
+
+            <!-- Skill Badges -->
+            <div class="tag-list">
+                <span class="badge"><i class="fa-brands fa-discord"></i> Bot Quản Trị</span>
+                <span class="badge badge-cyan"><i class="fa-solid fa-code"></i> Bot game Disocord </span>
+                <span class="badge badge-red"><i class="fa-brands fa-youtube"></i> Auto Notify Youtube </span>
+            </div>
+        </header>
+
+        <!-- ==========================================================================
+             2. FEATURED SERVICES SECTION (BOT YOUTUBE & SERVER MANAGEMENT)
+             ========================================================================== -->
+        <section class="services-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-fire"></i> Mấy Mẫu Bot Mình Code
+            </h2>
+
+            <div class="services-grid">
+
+                <!-- CARD 1: BOT THÔNG BÁO YOUTUBE TO DISCORD -->
+                <article class="service-card youtube-card">
+                    <div class="service-header">
+                        <div class="service-title-group">
+                            <div class="service-icon-box youtube-icon-box">
+                                <i class="fa-brands fa-youtube"></i>
+                            </div>
+                            <div>
+                                <h3 class="service-title">Bot Thông Báo YouTube Tự Động</h3>
+                                <span class="badge badge-red" style="font-size:0.65rem;">Tự động 100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="service-desc">
+                        Tính năng tự động phát hiện và bắn thông báo ngay khi kênh có Video mới hoặc phát
+                        Livestream hoặc Shorts trên YouTube vào Server Discord. Đơn giản, cực kỳ tiện lợi và không lo bỏ
+                        lỡ clip!
+                    </p>
+
+                    <!-- Banner Hình Ảnh Minh Họa -->
+                    <div class="card-media">
+                        <img src="assets/bot_youtube.jpg" alt="Minh họa Bot thông báo Youtube sang Discord">
+                    </div>
+
+                    <!-- Danh sách tính năng chính -->
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-bolt"></i> <span>Bot check thông báo 24/7 </span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-paintbrush"></i> <span>Tùy chỉnh Avatar &amp; Tên Bot</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-bell"></i> <span>Ping Role (@everyone / Role riêng)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-sliders"></i> <span>Có thể lọc riêng thông báo Live Stream, Video,
+                                Shorts </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 2: BOT QUẢN LÝ DISCORD SERVER TOÀN DIỆN -->
+                <article class="service-card">
+                    <div class="service-header">
+                        <div class="service-title-group">
+                            <div class="service-icon-box">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h3 class="service-title">Bot Quản Lý Server Discord</h3>
+                                <span class="badge badge-cyan" style="font-size:0.65rem;">Đầy đủ tính năng</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="service-desc">
+                        Tổng hợp đầy đủ các tính năng từ cơ bản đến nâng cao để quản trị một Server Discord trơn tru:
+                        Auto Mod chống spam, Cfs, Birthday, Reaction Roles tự chọn vai trò, Leveling XP, các game cơ bản
+                        trên discord và rất nhiều tính năng khác.
+                    </p>
+
+                    <!-- Banner Hình Ảnh Minh Họa -->
+                    <div class="card-media">
+                        <img src="assets/bot_management.jpg" alt="Minh họa Dashboard Bot Quản Lý Server Discord">
+                    </div>
+
+                    <!-- Danh sách tính năng chính -->
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-user-shield"></i> <span>Setup Auto-Mod chống Spam &amp; Link
+                                rác</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-ticket"></i> <span> Thông báo login/logout </span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-masks-theater"></i> <span>Reaction Roles &amp; Auto Role</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-trophy"></i> <span>Hệ thống Leveling &amp; BXH XP</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-microphone"></i> <span> Tạo room voice tự động, Bot đọc giọng google
+                            </span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-gamepad"></i> <span> Các game cơ bản dành cho discord
+                                như: câu cá, blackjack, ... </span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. ACTION BUTTONS & CONTACT LINKS
+             ========================================================================== -->
+        <section class="links-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-paper-plane"></i> Giao Lưu &amp; Trao Đổi
+            </h2>
+
+            <div class="action-grid">
+                <!-- Nút 1: Nhắn Tin Discord -->
+                <a href="https://discord.com/users/354094724916707328" target="_blank" rel="noopener"
+                    class="btn-action btn-discord">
+                    <div class="btn-action-content">
+                        <div class="btn-action-icon">
+                            <i class="fa-brands fa-discord"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <div>Nhắn tin qua Discord</div>
+                            <small style="color: var(--text-muted); font-weight:400;">Tag: @minhhieu99 (Inbox hỏi
+                                thoải mái nha)</small>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+                </a>
+
+                <!-- Nút 2: Facebook Cá Nhân -->
+                <a href="https://www.facebook.com/minhhieu090999/" target="_blank" rel="noopener"
+                    class="btn-action btn-facebook">
+                    <div class="btn-action-content">
+                        <div class="btn-action-icon">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <div>Facebook</div>
+                            <small style="color: var(--text-muted); font-weight:400;">Trò chuyện &amp; Trao đổi trực
+                                tiếp</small>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+                </a>
+
+                <!-- Nút 3: Kênh YouTube -->
+                <a href="https://www.youtube.com/@minh_hieu_0909" target="_blank" rel="noopener"
+                    class="btn-action btn-youtube">
+                    <div class="btn-action-content">
+                        <div class="btn-action-icon">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <div>Kênh YouTube</div>
+                            <small style="color: var(--text-muted); font-weight:400;"> Xin fl ké</small>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+                </a>
+
+                <!-- Nút 4: Kênh TikTok -->
+                <a href="https://www.tiktok.com/@minh_hieu_99" target="_blank" rel="noopener"
+                    class="btn-action btn-tiktok">
+                    <div class="btn-action-content">
+                        <div class="btn-action-icon">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <div>Kênh TikTok</div>
+                            <small style="color: var(--text-muted); font-weight:400;">@minh_hieu_99 (Video xàm xí
+                                chút)</small>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+                </a>
+
+                <!-- Nút 5: Mở Modal Bảng Giá -->
+                <button class="btn-action btn-pricing" onclick="openPricingModal()">
+                    <div class="btn-action-content">
+                        <div class="btn-action-icon">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <div>Xem Bảng Giá Tham Khảo</div>
+                            <small style="color: var(--text-muted); font-weight:400;">Giá thỏa thuận vui vẻ / Inbox
+                                thương lượng</small>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="social-mini-links">
+                <a href="https://discord.com/users/354094724916707328" target="_blank" title="Discord"><i
+                        class="fa-brands fa-discord"></i></a>
+                <a href="https://www.facebook.com/minhhieu090999/" target="_blank" title="Facebook"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@minh_hieu_0909" target="_blank" title="YouTube"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@minh_hieu_99" target="_blank" title="TikTok"><i
+                        class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <p>&copy; <span id="year"></span> <strong>Mờ Hờ</strong>. 📌 Made with ❤️ by MH</p>
+        </footer>
+
+    </div>
+
+    <!-- ==========================================================================
+         4. MODAL BẢNG GIÁ DỊCH VỤ
+         ========================================================================== -->
+    <div class="modal-overlay" id="pricing-modal" onclick="closePricingModalOnOutside(event)">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closePricingModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2 style="color: var(--text-heading); font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem;">
+                <span class="gradient-text">Bảng Giá Tham Khảo</span>
+            </h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                Mọi gói Bot đều có thể thỏa thuận vui vẻ, cứ inbox thương lượng thoải mái nha!
+            </p>
+
+            <div class="pricing-grid">
+                <!-- Gói 1 -->
+                <div class="pricing-card">
+                    <div class="pricing-title">Bot Thông Báo YouTube</div>
+                    <div class="pricing-price">Thỏa thuận <span>/ vui là chính</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Auto báo video/live/shorts </li>
+                        <li><i class="fa-solid fa-check"></i> Đổi tên &amp; Avatar Bot tùy thích</li>
+                        <li><i class="fa-solid fa-check"></i> Tùy chọn Ping Role thông báo</li>
+                        <li><i class="fa-solid fa-check"></i> Hướng dẫn setup miễn phí</li>
+                    </ul>
+                    <button class="btn-choose" onclick="selectPackage('Gói Bot YouTube')">Inbox Thương Lượng</button>
+                </div>
+
+                <!-- Gói 2: Featured -->
+                <div class="pricing-card featured">
+                    <div class="pricing-title">Combo Full Server</div>
+                    <div class="pricing-price">Thỏa thuận <span>/ hợp túi tiền</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Đầy đủ tính năng Bot YouTube</li>
+                        <li><i class="fa-solid fa-check"></i> Full tính năng Quản lý Server</li>
+                        <li><i class="fa-solid fa-check"></i> Tạo room voice tự động &amp; Bot đọc giọng google</li>
+                        <li><i class="fa-solid fa-check"></i> Leveling XP &amp; Reaction Roles</li>
+                        <li><i class="fa-solid fa-check"></i> Hỗ trợ sửa lỗi nhiệt tình</li>
+                    </ul>
+                    <button class="btn-choose" onclick="selectPackage('Gói Combo Full Server')">Inbox Thương
+                        Lượng</button>
+                </div>
+
+                <!-- Gói 3 -->
+                <div class="pricing-card">
+                    <div class="pricing-card-title pricing-title">Bot Theo Yêu Cầu</div>
+                    <div class="pricing-price">Thỏa thuận <span>/ theo tính năng</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Code tính năng riêng theo ý bạn</li>
+                        <li><i class="fa-solid fa-check"></i> Tích hợp Web / API khác</li>
+                        <li><i class="fa-solid fa-check"></i> Hướng dẫn chi tiết dễ sử dụng</li>
+                    </ul>
+                    <button class="btn-choose" onclick="selectPackage('Gói Bot Theo Yêu Cầu')">Inbox Thương
+                        Lượng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast-notif">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-text">Đã sao chép Username Discord!</span>
+    </div>
+
+    <!-- Modular JavaScript Module -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
